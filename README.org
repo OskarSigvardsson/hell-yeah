@@ -1,0 +1,27 @@
+* Implementing =yes= for fun
+This is a silly little repository for implementing the unix command =yes=. I
+wanted to see as an exercise how fast I could make it. Don't use this for
+anything :) sources are in the src/ folder.
+
+Uses =meson= for building, the =bench.sh= script is a simple benchmark, it uses
+=pv= and =timelimit=.
+
+Rough build/run instructions:
+
+#+BEGIN_SRC sh
+  meson setup build
+  meson configure build -Dbuildtype=release # probably not needed, i set that as the default setting in meson.build
+  meson test
+  ./bench.sh
+#+END_SRC
+
+Quick bench:
+
+#+BEGIN_SRC
+  [5.89GiB/s] <= GNU yes
+  [69.8MiB/s] <= Using printf
+  [ 232MiB/s] <= Using fwrite
+  [9.05MiB/s] <= Using write syscall, non-buffered
+  [7.52GiB/s] <= Using write syscall, buffered
+#+END_SRC
+

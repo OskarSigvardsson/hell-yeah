@@ -9,6 +9,8 @@ pkgs.stdenv.mkDerivation {
   mesonBuildType = "release";
   
   nativeBuildInputs = [
+    pkgs.shellcheck
+    pkgs.timelimit
     pkgs.meson
     pkgs.ninja
   ];
