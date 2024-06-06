@@ -11,7 +11,7 @@ Rough build/run instructions:
 #+BEGIN_SRC sh
   meson setup build
   meson configure build -Dbuildtype=release # probably not needed, i set that as the default setting in meson.build
-  meson test
+  meson test -C build
   ./bench.sh
 #+END_SRC
 

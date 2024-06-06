@@ -21,14 +21,14 @@ int do_write(int fd, char *begin, int count) {
 int main(int argc, char **argv) {
 	char *str = argc > 1 ? argv[1] : "y";
 	int len = strlen(str) + 1;
-	const int bufsize = 4096;
+	int bufsize = len > 4096 ? len : 4096;
 
 	char *begin = malloc(bufsize);
 	char *end = begin + bufsize;
 
 	char *ptr = begin;
 
-	while (ptr + len < end) {
+	while (ptr + len <= end) {
 		memcpy(ptr, str, len-1);
 		ptr[len-1] = '\n';
 		ptr += len;
